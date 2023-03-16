@@ -1,1 +1,0 @@
-[{"model": "user.dialog", "pk": 1, "fields": {"members": [1, 17]}}, {"model": "user.dialog", "pk": 2, "fields": {"members": [18]}}, {"model": "user.dialog", "pk": 3, "fields": {"members": [1, 18]}}, {"model": "user.dialog", "pk": 4, "fields": {"members": [17, 18]}}, {"model": "user.dialog", "pk": 5, "fields": {"members": [1]}}]
