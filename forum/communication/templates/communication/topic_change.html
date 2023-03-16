@@ -1,0 +1,9 @@
+{% extends 'post/base.html' %}
+{% load bootstrap4 %}
+{% block context %}
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form layout='horizontal' %}
+        {% buttons submit='Change' %}{% endbuttons %}
+    </form>
+{% endblock %}

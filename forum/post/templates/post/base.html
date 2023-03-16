@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{% url 'index' %}" class="active">News</a>
+    <a href="{% url 'forum_main' %}" class="active">Forum</a>
+    <a href="#">Shop</a>
+    <a href="#">Flea market</a>
+    <a href="{% url 'user_registration' %}">Registration</a>
+    {% if not user.is_authenticated %}
+        <a href="{% url 'user_login' %}">Log in</a>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+        <button class="dropbtn"> Account ({{ request.user.username }})
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="{% url 'user_profile' pk=request.user.pk %}">Profile</a>
+            <a href="{% url 'user_change_info' %}">Edit profile information</a>
+            <a href="{% url 'change_password' %}">Change password</a>
+            <a href="{% url 'dialog' %}">Messages</a>
+            <a href="{% url 'user_delete' %}">Delete user</a>
+            <a href="{% url 'user_logout' %}">Log out</a>
+        </div>
+    {% endif %}
+    </div>
+</div>
+{% block context %}
+
+{% endblock %}
+</body>
+</html>
+

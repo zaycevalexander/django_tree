@@ -1,0 +1,52 @@
+{% extends 'post/base.html' %}
+{% load static %}
+{% block context %}
+    <style>
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        .container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container img {
+            vertical-align: middle;
+        }
+
+        .container .content {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0); /* Цвет запасной вариант  */
+            background: rgba(0, 0, 0, 0.5); /* Черный фон с 0,5 непрозрачностью */
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+        }
+    </style>
+    <title>Main</title>
+    {% for post in posts %}
+        <div class="column">
+            <div class="container">
+                <h1>
+                    {% if post.is_active %}
+                        <img src="{% static 'images.jpeg' %}" alt="Примечаниеbook" style="width:400px;">
+                        <p><a href="{% url 'detail' pk=post.pk %}"> {{ post.title }}</a></p>
+                        <p>{{ post.created_date }}</p>
+                        <p>{{ post.author }}</p>
+                        <div class="content">
+                            <p>{{ post.content }}</p>
+                        </div>
+                    {% endif %}
+                </h1>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

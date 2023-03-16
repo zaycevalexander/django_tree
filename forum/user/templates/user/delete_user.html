@@ -1,0 +1,10 @@
+{% extends 'post/base.html' %}
+{% load bootstrap4 %}
+
+{% block context %}
+    <title>Delete</title>
+    <form method="post">
+        {% csrf_token %}
+        {% buttons submit='Delete' %}{% endbuttons %}
+    </form>
+{% endblock %}

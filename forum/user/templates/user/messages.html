@@ -1,0 +1,25 @@
+{% extends 'post/base.html' %}
+{% block context %}
+    {% if not dialog %}
+        <p>Not message</p>
+    {% else %}
+        {% load tz %}
+        {% if dialog %}
+            <div id="messages" class="panel">
+                <div id="innerMessages">
+                    {% for message in dialog.message_set.all %}
+                        {% include 'user/message.html' with message_item=message %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div id="message_form">
+            <form id="message-form" class="panel panel-body" method="post">
+                {% load bootstrap4 %}
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons submit='Send' %}{% endbuttons %}
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

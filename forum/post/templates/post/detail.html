@@ -1,0 +1,7 @@
+{% extends 'post/base.html' %}
+{% block context %}
+    <p> {{ post.title }}</p>
+    <p>{{ post.created_date }}</p>
+    <p>{{ post.author }}</p>
+    <p>{{ post.content }}</p>
+{% endblock %}

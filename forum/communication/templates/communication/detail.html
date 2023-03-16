@@ -1,0 +1,48 @@
+{% extends 'post/base.html' %}
+{% load bootstrap4 %}
+{% block context %}
+    <style>
+        .button {
+            background-color: burlywood;
+            border: none;
+            color: black;
+            padding: 17px 27px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 16px;
+        }
+
+        .button:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+    <title>{{ topic.title }}</title>
+    <h1> {{ topic.title }}</h1>
+    <p><a href="{% url 'user_profile' pk=topic.author.pk %}"> {{ topic.author }}</a> {{ topic.created_date }}</p>
+    <h2>{{ topic.context }}</h2>
+    <a href="{% url 'change_topic' pk=topic.pk %}">
+        <button class="button">Change</button>
+    </a>
+    <a href="{% url 'delete_topic' pk=topic.pk %}">
+        <button class="button">Delete</button>
+    </a>
+    <h2>Add a comment:</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form layout='horizontal' %}
+        {% buttons submit='Add comment' %}{% endbuttons %}
+    </form>
+    {% if comments %}
+        <h3>Comments on this entry:</h3>
+        {% for comment in comments %}
+            <div class="my-2 p-2 border">
+                <h5>{{ comment.author }}</h5>
+                <p>{{ comment.content }}</p>
+                <p class="text-right font-italic">{{ comment.created_date }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
