@@ -172,7 +172,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User
 AUTH_USER_MODEL = 'user.User'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'forum_main'
 
 # Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
