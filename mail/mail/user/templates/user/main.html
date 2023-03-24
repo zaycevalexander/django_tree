@@ -1,0 +1,46 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block context %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .parallax {
+            background-image: url('/static/Postman.jpg');
+
+            height: 80%;
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Dear user, welcome to our site.</h1>
+
+<div class="parallax"></div>
+
+<div style="height:340px;background-color:gray;font-size:36px">
+    Welcome to our email marketing site - the perfect tool to promote your business!
+
+    We offer a fast, reliable and efficient way to deliver your message to thousands of potential customers within
+    minutes.
+    We guarantee that your message will be delivered to the recipient's inbox and will not end up in spam. In addition,
+    we provide detailed delivery and open statistics to help you evaluate the effectiveness of your campaign.
+
+    Our system provides complete confidentiality and security of data transmission, as well as flexible settings for
+    choosing your target audience and creating a beautiful and professional design for your message.
+
+    Don't miss the opportunity to take your business to the next level with our email marketing. Register now and start
+    your effective advertising campaign!
+</div>
+
+
+</body>
+{% endblock context %}
