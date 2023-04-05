@@ -1,0 +1,5 @@
+Django==4.1.7
+django_debug_toolbar==3.8.1
+flake8==6.0.0
+isort==5.12.0
+sqlparse==0.4.3
